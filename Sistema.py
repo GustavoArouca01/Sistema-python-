@@ -23,7 +23,6 @@ class visitantes:
             time.sleep(0.6)
             db = sqlite3.connect("conexao")
             cursor = db.cursor()
-            
             print() 
             print("Cadastro realizado com sucesso") 
             time.sleep(1)
@@ -57,7 +56,18 @@ class visitantes:
         cursor.execute("SELECT * FROM visitantes")
         lista = cursor.fetchall()
         for i in lista:
-            print(i)
+            print(f'{i[0]:<25}{i[1]:<25}{i[2]:<25}{i[3]:<25}{i[4]:<25}')
+        print()
+        input("Essas são todas as pessoas cadastradas!").upper()
+        opcao = input("A) Editar  B) Menu Principal")
+        if opcao == "A":
+            self.editar()
+        elif opcao == "B":
+            self.menu()
+        else:
+             print(" OPÇÃO INCORRETA, SELECIONE UMA OPÇÃO ACIMA!!!")
+             self.menu()
+
 
 
     def apagar(self):
